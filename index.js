@@ -10,6 +10,21 @@
 var lazy = require('lazy-cache')(require);
 lazy('gitty', 'git');
 
+/**
+ * Asynchronously get the first commit from a git repository.
+ *
+ * ```js
+ * firstCommit('foo/.git', function(err, commit) {
+ *   if (err) return console.log(err);
+ *   // do stuff with commit
+ * });
+ * ```
+ * @param {String} `cwd` current working directory
+ * @param {Function} `callback`
+ * @return {Object}
+ * @api public
+ */
+
 function firstCommit(dir, cb) {
   if (typeof dir === 'function') {
     return firstCommit(process.cwd(), dir);
@@ -28,6 +43,29 @@ function firstCommit(dir, cb) {
     cb(null, history[history.length - 1]);
   });
 }
+
+/**
+ * Synchronously get the first commit from a git repository.
+ *
+ * ```js
+ * var commit = firstCommit.sync('foo/.git');
+ * ```
+ * @param {String} `cwd` current working directory
+ * @return {Object}
+ * @api public
+ */
+
+firstCommit.sync = function(cwd) {
+  var Repository = lazy.git.Repository;
+  var repo = new Repository(cwd || process.cwd());
+  var history = repo.logSync();
+
+  history.sort(function(a, b) {
+    return b.date.localeCompare(a.date);
+  });
+
+  return history[history.length - 1];
+};
 
 /**
  * Expose `firstCommit`

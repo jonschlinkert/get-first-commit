@@ -9,13 +9,19 @@ describe('get-first-commit', function() {
     assert.equal(typeof firstCommit, 'function');
   });
 
-  it('should return an object', function(cb) {
+  it('should return an object: async', function(cb) {
     firstCommit(function(err, commit) {
       if (err) return cb(err);
       assert(commit);
       assert.equal(typeof commit, 'object');
       cb();
     });
+  });
+
+  it('should return an object: sync', function() {
+    var commit = firstCommit.sync();
+    assert(commit);
+    assert.equal(typeof commit, 'object');
   });
 
   it('should throw an error when invalid args are passed', function(cb) {
