@@ -1,4 +1,4 @@
-# get-first-commit [![NPM version](https://badge.fury.io/js/get-first-commit.svg)](http://badge.fury.io/js/get-first-commit)
+# get-first-commit [![NPM version](https://badge.fury.io/js/get-first-commit.svg)](http://badge.fury.io/js/get-first-commit)  [![Build Status](https://travis-ci.org/jonschlinkert/get-first-commit.svg)](https://travis-ci.org/jonschlinkert/get-first-commit)
 
 > Returns a git repository's first commit as a JavaScript object.
 
@@ -13,18 +13,29 @@ $ npm i get-first-commit --save
 ## Usage
 
 ```js
-var firstCommitDate = require('get-first-commit');
+var getFirstCommit = require('get-first-commit');
 
-firstCommitDate(function(err, date) {
+getFirstCommit(function(err, commit) {
   if (err) return console.log(err);
-  console.log('first commit!', date);
+  console.log(commit);
 });
-//=> first commit! Tue Nov 17 2015 13:29:18 GMT-0500 (EST)
+```
+
+**Results in**
+
+```js
+{ commit: 'b371794fbdbdd68498e8c9f3bf766b095ad2fb30',
+  author: 'jonschlinkert <jon.schlinkert@sellside.com>',
+  date: 'Sun Nov 22 07:44:07 2015 -0500',
+  message: 'first commit' }
 ```
 
 ## Related projects
 
-[github-base](https://www.npmjs.com/package/github-base): Base methods for creating node.js apps that work with the GitHub API. | [homepage](https://github.com/jonschlinkert/github-base)
+* [git-repo-name](https://www.npmjs.com/package/git-repo-name): Get the repository name from the git remote origin URL. | [homepage](https://github.com/jonschlinkert/git-repo-name)
+* [git-user-name](https://www.npmjs.com/package/git-user-name): Get a user's name from git config at the project or global scope, depending on… [more](https://www.npmjs.com/package/git-user-name) | [homepage](https://github.com/jonschlinkert/git-user-name)
+* [git-username](https://www.npmjs.com/package/git-username): Get the username from a git remote origin URL. | [homepage](https://github.com/jonschlinkert/git-username)
+* [github-base](https://www.npmjs.com/package/github-base): Base methods for creating node.js apps that work with the GitHub API. | [homepage](https://github.com/jonschlinkert/github-base)
 
 ## Running tests
 
