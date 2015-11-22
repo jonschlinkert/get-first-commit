@@ -26,9 +26,19 @@
   "devDependencies": {
     "mocha": "*"
   },
+  "keywords": [
+    "commit",
+    "first",
+    "get"
+  ],
   "verb": {
     "related": {
-      "list": []
+      "list": [
+        "github-base",
+        "git-repo-name",
+        "git-user-name",
+        "git-username"
+      ]
     }
   }
 }
