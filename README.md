@@ -30,6 +30,42 @@ getFirstCommit(function(err, commit) {
   message: 'first commit' }
 ```
 
+## API
+
+### [firstCommit](index.js#L28)
+
+Asynchronously get the first commit from a git repository.
+
+**Params**
+
+* `cwd` **{String}**: current working directory
+* `callback` **{Function}**
+* `returns` **{Object}**
+
+**Example**
+
+```js
+firstCommit('foo/.git', function(err, commit) {
+  if (err) return console.log(err);
+  // do stuff with commit
+});
+```
+
+### [.sync](index.js#L58)
+
+Synchronously get the first commit from a git repository.
+
+**Params**
+
+* `cwd` **{String}**: current working directory
+* `returns` **{Object}**
+
+**Example**
+
+```js
+var commit = firstCommit.sync('foo/.git');
+```
+
 ## Related projects
 
 * [git-repo-name](https://www.npmjs.com/package/git-repo-name): Get the repository name from the git remote origin URL. | [homepage](https://github.com/jonschlinkert/git-repo-name)
